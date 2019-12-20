@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2019/12/16 17:28:20 by mcarrete         ###   ########.fr       */
+/*   Updated: 2019/12/19 21:21:56 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 # include <unistd.h>
 # include <stdio.h>
+#include <stdarg.h>
 # include "libft/libft.h"
 
+//int ft_printf(const char *str, ...);
 
-int ft_printf(const char *, ...);
+int ft_printf(char *str, ...);
+
 
 #endif

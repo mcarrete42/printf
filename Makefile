@@ -6,13 +6,11 @@
 #    By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/16 17:17:38 by mcarrete          #+#    #+#              #
-#    Updated: 2019/12/16 17:28:43 by mcarrete         ###   ########.fr        #
+#    Updated: 2019/12/19 21:02:26 by mcarrete         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = libftprintf.c main.c
-
-#SRCS BONUS =
+SRCS = libftprintf.c
 
 OBJS =				$(SRCS:.c=.o)
 
@@ -36,10 +34,11 @@ bonus:				$(OBJS_BONUS)
 						$(CC) $(CFLAGS) -I$(INCLUDES) -c $(SRCS_BONUS)
 						ar -rcs $(NAME) $(OBJS_BONUS)
 
-clean:					-@ $(RM) *.o
+clean:
+					-@ $(RM) *.o
 
 fclean:				clean
-						-@ $(RM) $(NAME)
+					-@ $(RM) $(NAME)
 
 re:					fclean all
 
