@@ -6,7 +6,7 @@
 #    By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/29 23:29:42 by mcarrete          #+#    #+#              #
-#    Updated: 2019/12/30 23:31:44 by mcarrete         ###   ########.fr        #
+#    Updated: 2020/01/02 16:40:24 by mcarrete         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,10 +44,10 @@
 # .PHONY:		clean fclean
 
 NAME			= libftprintf.a
-SRC				= libftprintf.c ft_putdouble.c ft_puthex.c parser.c
+SRC				= libftprintf.c ft_putdouble.c ft_puthex.c parser.c flag_parser.c
 SRC_LIB_PATH	= ./libft
 SRC_LIB_NAME	= ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_strlen.c \
-					ft_itoa.c
+					ft_itoa.c ft_strchr.c
 SRC_LIB			= $(addprefix $(SRC_LIB_PATH)/,$(SRC_LIB_NAME))
 OBJ				= $(SRC:.c=.o)
 OBJ_LIB 		= $(SRC_LIB_NAME:.c=.o)

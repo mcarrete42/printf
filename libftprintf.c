@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:27:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2019/12/30 23:49:17 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/02 19:58:46 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int		ft_printf(const char *str, ...)
 	char *str2;
 	static int i;
 	static int j;
-
 	str2 = (char*)str;
 	i = 0;
 	j = 1;
 	va_start(args, str);
+
 	while (str2[i] != 0)
 	{
 		if (type_reader(str2, i, j, args) == 1)
@@ -35,6 +35,7 @@ int		ft_printf(const char *str, ...)
 		i++;
 		j++;
 	}
+	va_end(args);
 	return (0);
 }
 
@@ -64,6 +65,6 @@ int		main()
 	//ft_printf("MY FT_PRINTF:\nThis is my int: %d\nAnd this is my char: %c\n\n", one, A);
 	//printf("PRINTF:\nThis is my int: %d\nAnd this is my char: %c\n\n", one, A);
 
-	ft_printf("MY FT_PRINTF:\nDecimal: %d\nInt: %i\nChar: %c\nString: %s\nFloat: %f\nUnsigned Int: %u\nHex: %x\nHEX: %X\nPointer: %p\n\n", four, one, A, str, e, un, four, four, ptr);
+	ft_printf("MY FT_PRINTF:\nDecimal: %-d\nInt: %i\nChar: %c\nString: %s\nFloat: %f\nUnsigned Int: %u\nHex: %x\nHEX: %X\nPointer: %p\n\n", four, one, A, str, e, un, four, four, ptr);
 	printf("PRINTF:\nDecimal: %d\nInt: %i\nChar: %c\nString: %s\nFloat: %f\nUnsigned Int: %u\nHex: %x\nHEX: %X\nPointer: %p\n\n", four, one, A, str, e, un, four, four, ptr);
 }
