@@ -6,35 +6,53 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 17:23:29 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/02 19:59:17 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/03 20:41:28 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		type_reader(char *str, int i, int j, va_list args, t_modifiers *flags)
+int		type_reader(char *str, int i, va_list args, t_modifiers *flags)
 {
 	char *str2;
 	int number_args;
-	t_modifiers *flags;
-	number_args = ft_count_percent(str2);  //hay que hace esa funcion
-	if (!(flags = malloc(sizeof(t_modifiers)* number_args)))
-		return (NULL);
-	flags->i = 0;
+	int number_flags;
+
 	str2 = (char*)str;
-	if (str2[i] == '%')
+	number_args = ft_arg_cunter(str2);
+	number_flags = 0;
+
+	while (str2[i] !='\0')
 	{
-		flags->i =  1;
-		if (ft_strchr("-0.*#’ +lh0123456789", str2[j]))
-			flag_reader(str2, j, args, flags);
-		if (int_reader(str2, j, args) == 1)
-			return (1);
-		else if (nbr_reader(str2, j, args) == 1)
-			return (1);
-		else if (char_reader(str2, j, args) == 1)
-			return (1);
+		if (str2[i] != '%' && str2[i])
+			ft_putchar_fd(str2[i], 1);
+		else if (str2[i] == '%')
+		{
+			flags->i = flags->i + 1;
+			if (!ft_strchr(CONVANDFLAGS, str[i + 1]))
+				break;
+			while (ft_strchr(CONVANDFLAGS, str2[i + 1]))
+			{
+				if(ft_strchr(FLAGS, str2[i + 1]))
+					flag_reader(str2, i + 1, args, flags);
+				else if (ft_strchr(CONVERSIONS, str2[i + 1]))
+					conversions(str2, i, args, flags);
+				i++;
+			}
+		}
+		i++;
 	}
 	return (0);
+}
+
+void	conversions(char *str2, int i, va_list args, t_modifiers *flags)
+{
+	int j;
+
+	j = i + 1;
+	int_reader(str2,j, args);
+	nbr_reader(str2, j, args);
+	char_reader(str2, j, args);
 }
 
 int		int_reader(char *str2, int j, va_list args)
@@ -79,9 +97,9 @@ int 	nbr_reader(char *str2, int j, va_list args)
 
 int		char_reader(char *str2, int j, va_list args)
 {
-	char *str3;
-	void *ptr;
-	int addr;
+	char				*str3;
+	void				*ptr;
+	unsigned long int	addr;
 
 	if (str2[j] == 'c')
 	{
@@ -97,8 +115,8 @@ int		char_reader(char *str2, int j, va_list args)
 	else if (str2[j] == 'p')  //esta mal
 	{
 		ptr = va_arg(args, void *);
-		addr = (int)ptr;
-		ft_puthex_fd(addr, 1);
+		addr = (unsigned long int)ptr;
+		ft_putptr_fd(addr, 1);
 		return (1);
 	}
 	else if (str2[j] == '%')
@@ -107,4 +125,22 @@ int		char_reader(char *str2, int j, va_list args)
 		return (1);
 	}
 	return(0);
+}
+
+int		ft_arg_cunter(char *str2)
+{
+	char	*res;
+	int		i;
+	char	c;
+
+	res = str2;
+	c = '%';
+	i = 0;
+	while (*res)
+	{
+		if (*res == c)
+			i++;
+		res++;
+	}
+	return (i);
 }
