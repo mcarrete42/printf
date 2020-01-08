@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:27:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/03 20:41:45 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/07 21:56:13 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_printf(const char *str, ...)
 	flags_initialiser(flags);
 	flags->strtoformat = (char *)str;
 	va_start(args, str);
-	type_reader(str, i, args, flags);
+	type_reader(str2, i, args, flags);
 	va_end(args);
 	return (0);
 }
@@ -49,7 +49,7 @@ int		main()
 	one = -2147483648;
 	four = 10;
 	//ft_printf("nada\n");
-	//printf("%");
+	//printf("%+ 5d", un);
 
 	//ft_printf("MY FT_PRINTF:\nThis is my first int: %d\nAnd this is my second int: %d\n\n", one, four);
 	//printf("PRINTF:\nThis is my first int: %d\nAnd this is my second int: %d\n", one, four);

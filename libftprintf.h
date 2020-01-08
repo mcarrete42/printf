@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/03 20:40:35 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/07 21:41:24 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,11 @@ typedef struct 	s_modifiers
 
 int		ft_printf(const char *str, ...);
 
-
 /*
 ** ---------------------PRINT OUTPUT OF CONVERSIONS + FLAGS--------------------
 */
 
-
-void	conversions(char *str2, int i, va_list args, t_modifiers *flags);
+int		conversions(char str2_i, int i, va_list args, t_modifiers *flags);
 void	ft_putdouble_fd(double n, int fd);
 void	ft_puthex_fd(int n, int fd);
 void	ft_puthex_upper_fd(int n, int fd);
@@ -65,19 +63,23 @@ void	ft_putptr_fd(int n, int fd);
 /*
 ** ------------------------PARSE CONVERSIONS ONLY------------------------------
 */
+
 int		type_reader(char *str, int i, va_list args, t_modifiers *flags);
-int		int_reader(char *str, int j, va_list args);
-int 	nbr_reader(char *str, int j, va_list args);
-int		char_reader(char *str, int j, va_list args);
+int		int_output(char str2_i, int i, va_list args, t_modifiers *flags);
+int 	nbr_reader(char str2_i, va_list args);
+int		char_reader(char str_i, va_list args);
 
 
 /*
 ** ------------------------------PARSE FLAGS-----------------------------------
 */
 
-int		flag_reader(char *str, int j, va_list args, t_modifiers *flags);
+int		flag_parser(char *str2, int i, va_list args, t_modifiers *flags);
+int		flag_reader(char *str2, int i, t_modifiers *flags);
 void	flags_initialiser(t_modifiers *flags);
 int		ft_arg_cunter(char *str2);
 void	flag_sum(t_modifiers *flags);
+void	precision_definer(char *str2, int i, va_list args, t_modifiers *flags);
+void	width_definer(char str2_i, t_modifiers *flags);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 17:23:29 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/03 20:41:28 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/07 22:01:51 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,19 @@ int		type_reader(char *str, int i, va_list args, t_modifiers *flags)
 
 	while (str2[i] !='\0')
 	{
-		if (str2[i] != '%' && str2[i])
+		if (str2[i] != '%')
 			ft_putchar_fd(str2[i], 1);
 		else if (str2[i] == '%')
 		{
-			flags->i = flags->i + 1;
 			if (!ft_strchr(CONVANDFLAGS, str[i + 1]))
 				break;
 			while (ft_strchr(CONVANDFLAGS, str2[i + 1]))
 			{
-				if(ft_strchr(FLAGS, str2[i + 1]))
-					flag_reader(str2, i + 1, args, flags);
-				else if (ft_strchr(CONVERSIONS, str2[i + 1]))
-					conversions(str2, i, args, flags);
-				i++;
+				i = i + 1;
+				if(ft_strchr(FLAGS, str2[i]))
+					i = flag_parser(str2, i, args, flags);
+				else if (ft_strchr(CONVERSIONS, str2[i]))
+					i = conversions(str2[i], i, args, flags) + 2;
 			}
 		}
 		i++;
@@ -45,49 +44,32 @@ int		type_reader(char *str, int i, va_list args, t_modifiers *flags)
 	return (0);
 }
 
-void	conversions(char *str2, int i, va_list args, t_modifiers *flags)
+//hay que hacer esta, es "conversions" de la otra
+int	conversions(char str2_i, int i, va_list args, t_modifiers *flags)
 {
-	int j;
-
-	j = i + 1;
-	int_reader(str2,j, args);
-	nbr_reader(str2, j, args);
-	char_reader(str2, j, args);
+	flags->i = i;
+	if (str2_i == 'd' || str2_i == 'i' || str2_i == 'u')
+		int_output(str2_i, i, args, flags);
+	nbr_reader(str2_i, args);
+	char_reader(str2_i, args);
+	flags_initialiser(flags);
+	return (flags->i - 1);
 }
 
-int		int_reader(char *str2, int j, va_list args)
-{
-	if (str2[j] == 'd')
-	{
-		ft_putnbr_fd(va_arg(args, int), 1);
-		return (1);
-	}
-	if (str2[j] == 'i')
-	{
-		ft_putnbr_fd(va_arg(args, int), 1);
-		return (1);
-	}
-	if (str2[j] == 'u')
-	{
-		ft_putnbr_fd(va_arg(args, unsigned int), 1);
-		return (1);
-	}
-	return(0);
-}
 
-int 	nbr_reader(char *str2, int j, va_list args)
+int 	nbr_reader(char str2_i, va_list args)
 {
-	if (str2[j] == 'f')
+	if (str2_i == 'f')
 	{
 		ft_putdouble_fd(va_arg(args, double), 1);
 		return (1);
 	}
-	if (str2[j] == 'x')
+	if (str2_i == 'x')
 	{
 		ft_puthex_fd(va_arg(args, int), 1);
 		return (1);
 	}
-	if (str2[j] == 'X')
+	if (str2_i == 'X')
 	{
 		ft_puthex_upper_fd(va_arg(args, int), 1);
 		return (1);
@@ -95,31 +77,31 @@ int 	nbr_reader(char *str2, int j, va_list args)
 	return(0);
 }
 
-int		char_reader(char *str2, int j, va_list args)
+int		char_reader(char str2_i, va_list args)
 {
 	char				*str3;
 	void				*ptr;
 	unsigned long int	addr;
 
-	if (str2[j] == 'c')
+	if (str2_i == 'c')
 	{
 		ft_putchar_fd(va_arg(args, int), 1);
 		return (1);
 	}
-	else if (str2[j] == 's')
+	else if (str2_i == 's')
 	{
 		str3 = va_arg(args, char *);
 		ft_putstr_fd(str3, 1);
 		return (1);
 	}
-	else if (str2[j] == 'p')  //esta mal
+	else if (str2_i == 'p')  //esta mal
 	{
 		ptr = va_arg(args, void *);
 		addr = (unsigned long int)ptr;
 		ft_putptr_fd(addr, 1);
 		return (1);
 	}
-	else if (str2[j] == '%')
+	else if (str2_i == '%')
 	{
 		ft_putchar_fd('%', 1);
 		return (1);

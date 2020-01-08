@@ -6,32 +6,35 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 13:55:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/03 19:42:33 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/07 21:44:19 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		flag_reader(char *str2, int j, va_list args, t_modifiers *flags)
+int		flag_parser(char *str2, int i, va_list args, t_modifiers *flags)
 {
-	char *width;
+	flag_reader(str2, i, flags);
+	precision_definer(str2, i, args, flags);
 
-	if (ft_strchr("-", str2[j]))
-		flags->minus = 1;
-	if (ft_strchr("0", str2[j]))
-		flags->zero = 1;
-	if (ft_strchr(".", str2[j]))
-		flags->is_precision = 1;
-	if (ft_strchr("*", str2[j]))
-		flags->star = 1;
-	if (ft_strchr("#", str2[j]))
-		flags->hash = 1;
-	if (ft_strchr(" ", str2[j]))
-		flags->space = 1;
-	if (ft_strchr("+", str2[j]))
-		flags->plus = 1;
-	if (ft_strchr("0123456789", str2[j])) // y el 0?
-		flags->is_width = 1;
+}
+
+int		flag_reader(char *str2, int i, t_modifiers *flags)
+{
+	while (ft_strchr("0#-+ ", str2[flags->i]))
+	{
+		if (str2[i] == '0')
+			flags->zero = 1;
+		if (str2[i] == '#')
+			flags->hash = 1;
+		if (str2[i] == '-')
+			flags->minus = 1;
+		if (str2[i] == '+')
+			flags->plus = 1;
+		if (str2[i] == ' ')
+			flags->space = 1;
+		flags->i++;
+	}
 	return (0);
 }
 
@@ -49,10 +52,34 @@ void	flags_initialiser(t_modifiers *flags)
 	flags->is_width = 0;
 }
 
-void	flag_sum(t_modifiers *flags)
+void	precision_definer(char *str2, int i, va_list args, t_modifiers *flags)
 {
-	int		sum;
+	int precision;
 
-	sum = flags->minus + flags->is_precision + flags->star + flags->hash +
-			flags->space + flags->plus + flags->is_width;
+	i = flags->i;
+	if (str2[i] == ".")
+	{
+		flags->is_precision = 1;
+		if (str2[i] >= '0' && str2[i] <= '9')
+		{
+			flags->precision = ft_atoi(&str2[i + 1]);
+			i++;
+		}
+		else if (str2[i + 1] == '*')
+		{
+			precision = va_arg(args, int);
+			if (precision >= 0)
+				flags->precision = precision;
+			else if (precision < 0)
+				flags->precision = 0;
+			i++;
+		}
+	}
+	flags->i = i;
+}
+
+void	width_definer(char str2_i, t_modifiers *flags)
+{
+
+
 }
