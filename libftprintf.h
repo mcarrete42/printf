@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/07 21:41:24 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/08 21:27:37 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_putdouble_fd(double n, int fd);
 void	ft_puthex_fd(int n, int fd);
 void	ft_puthex_upper_fd(int n, int fd);
 void	ft_putadress_fd(void *s, int fd);
-void	ft_putptr_fd(int n, int fd);
+void	ft_putptr_fd(unsigned long n, int fd);
 
 /*
 ** ------------------------PARSE CONVERSIONS ONLY------------------------------
@@ -80,6 +80,6 @@ void	flags_initialiser(t_modifiers *flags);
 int		ft_arg_cunter(char *str2);
 void	flag_sum(t_modifiers *flags);
 void	precision_definer(char *str2, int i, va_list args, t_modifiers *flags);
-void	width_definer(char str2_i, t_modifiers *flags);
+void	width_definer(char *str2, int i, t_modifiers *flags);
 
 #endif

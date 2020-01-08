@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_output.c                                       :+:      :+:    :+:   */
+/*   ft_bspace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 18:24:59 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/08 19:29:36 by mcarrete         ###   ########.fr       */
+/*   Created: 2020/01/08 19:06:22 by mcarrete          #+#    #+#             */
+/*   Updated: 2020/01/08 19:15:51 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-int		int_output(char str2_i, int i, va_list args, t_modifiers *flags)
+void	ft_bspace(void *s, size_t n)
 {
-	char *str;
+	unsigned long	i;
+	char			*ptr;
 
-	if (flags->is_width == 1)
+	ptr = s;
+	i = 0;
+	while (i <= n)
 	{
-		size_t width;
-		width = (size_t)flags->width;
-		ft_bspace(str, width);
+		ptr[i] = 'a';
+		i++;
 	}
-	printf("my str de width: %s", str);
-	if (str2_i == 'u')
-		ft_putnbr_fd(va_arg(args, unsigned int), 1);
-	else if (str2_i == 'd' || (str2_i == 'i'))
-		ft_putnbr_fd(va_arg(args, int), 1);
-	return (0);
+	ptr[i] = '\0';
 }

@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 17:23:29 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/07 22:01:51 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/08 21:30:33 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		type_reader(char *str, int i, va_list args, t_modifiers *flags)
 				if(ft_strchr(FLAGS, str2[i]))
 					i = flag_parser(str2, i, args, flags);
 				else if (ft_strchr(CONVERSIONS, str2[i]))
-					i = conversions(str2[i], i, args, flags) + 2;
+					i = conversions(str2[i], i, args, flags) + 1;
 			}
 		}
 		i++;
@@ -44,7 +44,6 @@ int		type_reader(char *str, int i, va_list args, t_modifiers *flags)
 	return (0);
 }
 
-//hay que hacer esta, es "conversions" de la otra
 int	conversions(char str2_i, int i, va_list args, t_modifiers *flags)
 {
 	flags->i = i;
@@ -96,8 +95,9 @@ int		char_reader(char str2_i, va_list args)
 	}
 	else if (str2_i == 'p')  //esta mal
 	{
-		ptr = va_arg(args, void *);
-		addr = (unsigned long int)ptr;
+		ptr = va_arg(args, unsigned long int);
+		addr = ptr;
+		write(1, "0x", 2);
 		ft_putptr_fd(addr, 1);
 		return (1);
 	}
