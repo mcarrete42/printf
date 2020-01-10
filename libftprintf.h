@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/08 21:27:37 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/10 21:18:25 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ typedef struct 	s_modifiers
 	int		minus;
 	int		zero;
 	int		precision;
-	int		is_precision;
 	int		star;
 	int 	hash;
 	int		space;
 	int		plus;
 	int		length;
 	int		width;
-	int		is_width;
 }			t_modifiers;
 
 #ifndef LIBFTPRINTF_H
@@ -75,11 +73,11 @@ int		char_reader(char str_i, va_list args);
 */
 
 int		flag_parser(char *str2, int i, va_list args, t_modifiers *flags);
-int		flag_reader(char *str2, int i, t_modifiers *flags);
+int		flag_reader(char *str2, t_modifiers *flags);
 void	flags_initialiser(t_modifiers *flags);
 int		ft_arg_cunter(char *str2);
 void	flag_sum(t_modifiers *flags);
-void	precision_definer(char *str2, int i, va_list args, t_modifiers *flags);
-void	width_definer(char *str2, int i, t_modifiers *flags);
+void	precision_definer(char *str2, va_list args, t_modifiers *flags);
+void	width_definer(char *str2, va_list args, t_modifiers *flags);
 
 #endif

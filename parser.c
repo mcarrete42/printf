@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 17:23:29 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/08 21:30:33 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/10 21:01:38 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,11 @@
 int		type_reader(char *str, int i, va_list args, t_modifiers *flags)
 {
 	char *str2;
-	int number_args;
-	int number_flags;
 
 	str2 = (char*)str;
-	number_args = ft_arg_cunter(str2);
-	number_flags = 0;
-
 	while (str2[i] !='\0')
 	{
-		if (str2[i] != '%')
+		if (str2[i] != '%' && str2[i])
 			ft_putchar_fd(str2[i], 1);
 		else if (str2[i] == '%')
 		{
@@ -33,10 +28,13 @@ int		type_reader(char *str, int i, va_list args, t_modifiers *flags)
 			while (ft_strchr(CONVANDFLAGS, str2[i + 1]))
 			{
 				i = i + 1;
-				if(ft_strchr(FLAGS, str2[i]))
-					i = flag_parser(str2, i, args, flags);
-				else if (ft_strchr(CONVERSIONS, str2[i]))
-					i = conversions(str2[i], i, args, flags) + 1;
+				if (ft_strchr(CONVERSIONS, str2[i]))
+				{
+					conversions(str2[i], i, args, flags);
+					break;
+				}
+				else if(ft_strchr(FLAGS, str2[i]))
+					flag_parser(str2, i, args, flags);
 			}
 		}
 		i++;
@@ -49,10 +47,13 @@ int	conversions(char str2_i, int i, va_list args, t_modifiers *flags)
 	flags->i = i;
 	if (str2_i == 'd' || str2_i == 'i' || str2_i == 'u')
 		int_output(str2_i, i, args, flags);
+	/*if (str2_i == 'u');
+		unsinged_output(str2_i, i, args, flags);
+		*/
 	nbr_reader(str2_i, args);
 	char_reader(str2_i, args);
 	flags_initialiser(flags);
-	return (flags->i - 1);
+	return (0);
 }
 
 
@@ -79,8 +80,7 @@ int 	nbr_reader(char str2_i, va_list args)
 int		char_reader(char str2_i, va_list args)
 {
 	char				*str3;
-	void				*ptr;
-	unsigned long int	addr;
+	unsigned long		addr;
 
 	if (str2_i == 'c')
 	{
@@ -95,8 +95,7 @@ int		char_reader(char str2_i, va_list args)
 	}
 	else if (str2_i == 'p')  //esta mal
 	{
-		ptr = va_arg(args, unsigned long int);
-		addr = ptr;
+		addr = va_arg(args, unsigned long int);
 		write(1, "0x", 2);
 		ft_putptr_fd(addr, 1);
 		return (1);

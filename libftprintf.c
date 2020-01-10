@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:27:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/08 21:04:16 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/10 21:29:33 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ int		ft_printf(const char *str, ...)
 	if (!(flags = (t_modifiers*)malloc(sizeof(t_modifiers))))
 		return (0);
 	flags_initialiser(flags);
+	flags->i = 0;
 	flags->strtoformat = (char *)str;
 	va_start(args, str);
 	type_reader(str2, i, args, flags);
-	//printf("My STUCT:\nlen: %d\nMinus:\nZero %d\nPrecision: %d     is_precision: %d\nStar: %d\nHash: %d\nSpace: %d\nPlus: %d\nLenght: %d\nWidth: %d      is_width: %d\n", flags->len, flags->minus, flags->zero, flags->precision, flags->is_precision, flags->star, flags->hash, flags->space, flags->plus, flags->length, flags->width, flags->is_width);
 	va_end(args);
+	free(flags);
 	return (0);
 }
 
@@ -39,16 +40,18 @@ int		main()
 	char			A;
 	char			*str;
 	float			e;
-	unsigned int	un;
+	int	un;
 	int				*ptr;
+	int				starwidth;
 
+	starwidth = 3;
 	ptr = &four;
 	un = 23;
-	e = 333.1416182434;
+	e = 333.1416182432565656565654;
 	A = 'A';
 	str = "hola que tal";
 	one = -2147483648;
-	four = 12334355654334564;
+	four = 1234567;
 	//ft_printf("nada\n");
 	//printf("%+ 5d", un);
 
@@ -58,7 +61,9 @@ int		main()
 	//ft_printf("MY FT_PRINTF:\nThis is my int: %d\nAnd this is my char: %c\n\n", one, A);
 	//printf("PRINTF:\nThis is my int: %d\nAnd this is my char: %c\n\n", one, A);
 
-	ft_printf("MY FT_PRINTF:\nDecimal: %d\nInt: %i\nChar: %c\nString: %s\nFloat: %f\nUnsigned Int: %u\nHex: %x\nHEX: %X\nPointer: %p\n\n", four, one, A, str, e, un, four, four, ptr);
-	printf("\nPRINTF:\nDecimal: %d\nInt: %i\nChar: %c\nString: %s\nFloat: %f\nUnsigned Int: %u\nHex: %x\nHEX: %X\nPointer: %p\n\n", four, one, A, str, e, un, four, four, ptr);
+	ft_printf("MY FT_PRINTF:\nDecimal: %*d\nInt: %i\nChar: %c\nString: %s\nFloat: %f\nUnsigned Int: %u\nHex: %x\nHEX: %X\nPointer: %p\n\n", starwidth, four, one, A, str, e, un, four, four, ptr);
+	printf("\nPRINTF:\nDecimal: %*d\nInt: %i\nChar: %c\nString: %s\nFloat: %f\nUnsigned Int: %u\nHex: %x\nHEX: %X\nPointer: %p\n\n", starwidth, four, one, A, str, e, un, four, four, ptr);
+	//printf("\nMy STUCT:\nlen: %d\nMinus:\nZero %d\nPrecision: %d     is_precision: %d\nStar: %d\nHash: %d\nSpace: %d\nPlus: %d\nLenght: %d\nWidth: %d      is_width: %d\n", flags->len, flags->minus, flags->zero, flags->precision, flags->is_precision, flags->star, flags->hash, flags->space, flags->plus, flags->length, flags->width, flags->is_width);
+
 }
 

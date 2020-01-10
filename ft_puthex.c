@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 23:01:24 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/08 21:27:49 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/10 18:41:38 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_puthex_upper_fd(int n, int fd)
 		nb = -nb;
 	}
 	if (nb > 15)
-		ft_puthex_fd(nb / 16, fd);
+		ft_puthex_upper_fd(nb / 16, fd);
 	rem = nb % 16;
 	c = rem < 10 ? (char)rem + '0' : (char)rem + '7';
 	write(fd, &c, 1);
