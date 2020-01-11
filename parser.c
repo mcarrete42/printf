@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 17:23:29 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/10 21:01:38 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/11 13:55:40 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		type_reader(char *str, int i, va_list args, t_modifiers *flags)
 			ft_putchar_fd(str2[i], 1);
 		else if (str2[i] == '%')
 		{
+			flags_initialiser(flags);
 			if (!ft_strchr(CONVANDFLAGS, str[i + 1]))
 				break;
 			while (ft_strchr(CONVANDFLAGS, str2[i + 1]))

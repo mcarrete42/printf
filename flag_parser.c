@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 13:55:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/10 21:25:03 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/11 13:50:18 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		flag_parser(char *str2, int i, va_list args, t_modifiers *flags)
 	return (0);
 }
 
-int		flag_reader(char *str2, t_modifiers *flags)
+void		flag_reader(char *str2, t_modifiers *flags)
 {
 	while (ft_strchr("0#-+ ", str2[flags->i]))
 	{
@@ -37,7 +37,6 @@ int		flag_reader(char *str2, t_modifiers *flags)
 			flags->space = 1;
 		flags->i++;
 	}
-	return (0);
 }
 
 void	flags_initialiser(t_modifiers *flags)

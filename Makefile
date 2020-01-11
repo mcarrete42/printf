@@ -6,7 +6,7 @@
 #    By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/29 23:29:42 by mcarrete          #+#    #+#              #
-#    Updated: 2020/01/08 19:16:18 by mcarrete         ###   ########.fr        #
+#    Updated: 2020/01/11 13:09:09 by mcarrete         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRC				= libftprintf.c ft_putdouble.c ft_puthex.c parser.c flag_parser.c \
 					int_output.c
 SRC_LIB_PATH	= ./libft
 SRC_LIB_NAME	= ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_strlen.c \
-					ft_itoa.c ft_strchr.c ft_atoi.c ft_isdigit.c ft_isspace.c ft_bspace.c
+					ft_itoa.c ft_strchr.c ft_atoi.c ft_isdigit.c ft_isspace.c ft_bspace.c \
+					ft_strjoin.c ft_bzero.c
 SRC_LIB			= $(addprefix $(SRC_LIB_PATH)/,$(SRC_LIB_NAME))
 OBJ				= $(SRC:.c=.o)
 OBJ_LIB 		= $(SRC_LIB_NAME:.c=.o)

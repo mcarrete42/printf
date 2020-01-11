@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/10 21:18:25 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/11 13:50:53 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		char_reader(char str_i, va_list args);
 */
 
 int		flag_parser(char *str2, int i, va_list args, t_modifiers *flags);
-int		flag_reader(char *str2, t_modifiers *flags);
+void	flag_reader(char *str2, t_modifiers *flags);
 void	flags_initialiser(t_modifiers *flags);
 int		ft_arg_cunter(char *str2);
 void	flag_sum(t_modifiers *flags);

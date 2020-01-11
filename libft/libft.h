@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 20:50:32 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/08 19:07:17 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/11 13:04:50 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb);
 char	*ft_strstr(char *str, char *to_find);
 int		ft_super_atoi(char *str);
 void	ft_bspace(void *s, size_t n);
+void	ft_bzeroes(void *s, size_t n);
 
 #endif
