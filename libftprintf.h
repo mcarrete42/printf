@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/11 13:50:53 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/12 21:06:31 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct 	s_modifiers
 	int		minus;
 	int		zero;
 	int		precision;
+	int		is_precision;
 	int		star;
 	int 	hash;
 	int		space;
@@ -57,6 +58,13 @@ void	ft_puthex_fd(int n, int fd);
 void	ft_puthex_upper_fd(int n, int fd);
 void	ft_putadress_fd(void *s, int fd);
 void	ft_putptr_fd(unsigned long n, int fd);
+int		is_width(int arg_int, char *str_int, va_list args, t_modifiers *flags);
+char	*plus_space(int arg_int, char *str_int, t_modifiers *flags);
+char	*zero_load(char *pad_char, int padding, int arg_int, t_modifiers *flags);
+char	*is_precision(char *str_int, va_list args, t_modifiers *flags);
+
+
+
 
 /*
 ** ------------------------PARSE CONVERSIONS ONLY------------------------------

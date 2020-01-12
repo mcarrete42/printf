@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 19:06:22 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/11 13:57:43 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/11 20:47:16 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_bspace(void *s, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		ptr[i] = 'a';
+		ptr[i] = ' ';
 		i++;
 	}
 	ptr[i] = '\0';
