@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:24:59 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/12 21:19:36 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/12 21:22:26 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		is_width(int arg_int, char *str_int, va_list args, t_modifiers *flags)
 
 	padding = flags->width - ft_strlen(str_int);
 	if ((flags->plus == 1 && flags->zero == 0) ||
-	 (flags->space == 1 && flags->zero == 0))
+		(flags->space == 1 && flags->zero == 0))
 	{
 		padding = padding - 1;
 		str_int = plus_space(arg_int, str_int, flags);

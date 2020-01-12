@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 13:55:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/12 21:20:22 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/12 21:25:15 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ void	precision_definer(char *str2, va_list args, t_modifiers *flags)
 			while (str2[i] >= '0' && str2[i] <= '9')
 				i++;
 		}
-		else if (str2[flags->i] == '*')
+		else if (str2[i] == '*')
 		{
 			precision = va_arg(args, int);
 			if (precision >= 0)
 				flags->precision = precision;
 			else if (precision < 0)
 				flags->precision = 0;
-			while (str2[flags->i] == '*')
+			while (str2[i] == '*')
 				i++;
 		}
 	}
