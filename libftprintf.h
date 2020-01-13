@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/12 21:06:31 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/13 18:58:15 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct 	s_modifiers
 	int 	hash;
 	int		space;
 	int		plus;
+	int		tilde;
 	int		length;
 	int		width;
 }			t_modifiers;
@@ -41,6 +42,8 @@ typedef struct 	s_modifiers
 # include <stdio.h>
 # include <stdarg.h>
 # include "libft/libft.h"
+
+
 
 /*
 ** -----------------------------------PRINTF-----------------------------------
@@ -67,11 +70,12 @@ char	*is_precision(char *str_int, va_list args, t_modifiers *flags);
 
 
 /*
-** ------------------------PARSE CONVERSIONS ONLY------------------------------
+** ------------------------PARSE CONVERSIONS ----------------------------------
 */
 
 int		type_reader(char *str, int i, va_list args, t_modifiers *flags);
 int		int_output(char str2_i, int i, va_list args, t_modifiers *flags);
+int		u_output(char str2_i, int i, va_list args, t_list flags);
 int 	nbr_reader(char str2_i, va_list args);
 int		char_reader(char str_i, va_list args);
 

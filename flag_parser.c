@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 13:55:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/12 21:25:15 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/13 18:52:13 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,5 @@ void	width_definer(char *str2, va_list args, t_modifiers *flags)
 		flags->i++;
 	}
 	else
-		flags->i++; //porque entonces es precision, no width
+		flags->i++;
 }
