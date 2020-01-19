@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 19:43:26 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/19 13:07:47 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/19 18:42:22 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int			float_output(char str2_i, int i, va_list args, t_modifiers *flags)
 	if (flags->width > ft_strlen(str_flo))
 		str_flo = is_width(arg_flo, str_flo, args, flags);
 	ft_putstr_fd(str_flo, 1);
+	flags->ret_val = flags->ret_val + ft_strlen(str_flo);
+
 	free(str_flo);
 	return (0);
 }

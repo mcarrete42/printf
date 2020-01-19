@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 15:18:46 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/19 15:53:35 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/19 19:10:37 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,15 @@ void	string_output(char str2_i, int i, va_list args, t_modifiers *flags)
 
 	str =  va_arg(args, char *);
 	flags->conversion = str2_i;
-	if (flags->width > ft_strlen(str) &&
-			!(flags->zero == 1 && flags->minus == 1))
+	if(flags->minus == 1 && flags->zero == 1)
+		flags->zero = 0;
+	if (flags->width > ft_strlen(str))
 		string_flags(str, args, flags);
 	else
+	{
 		ft_putstr_fd(str, 1);
+		flags->ret_val = flags->ret_val + ft_strlen(str);
+	}
 }
 
 int		string_flags(char *str, va_list args, t_modifiers *flags)
@@ -42,6 +46,7 @@ int		string_flags(char *str, va_list args, t_modifiers *flags)
 	else if (flags->minus == 1)
 		padding_str = ft_strjoin(str, padding_str);
 	ft_putstr_fd(padding_str, 1);
+	flags->ret_val = flags->ret_val + ft_strlen(padding_str);
 	free(padding_str);
 	return (0);
 }

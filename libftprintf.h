@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/19 15:21:51 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/19 18:03:28 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct 	s_modifiers
 	int		width;
 	int		float_dec;
 	int		float_non_dec;
+	int		ret_val;
 }			t_modifiers;
 
 #ifndef LIBFTPRINTF_H

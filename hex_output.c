@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 23:01:24 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/19 16:01:13 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/19 18:34:01 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags)
 	else if (flags->conversion == 'X' && flags->hash == 1 && arg_hex != 0)
 		hex_str = ft_strjoin("0X", hex_str);
 	ft_putstr_fd(hex_str, 1);
+	flags->ret_val = flags->ret_val + ft_strlen(hex_str);
 	free(hex_str);
 	return (0);
 }

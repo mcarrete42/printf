@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 17:23:29 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/19 15:54:56 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/19 19:00:29 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@ int		type_reader(char *str, int i, va_list args, t_modifiers *flags)
 {
 	char *str2;
 
+	flags->ret_val = 0;
 	str2 = (char*)str;
 	while (str2[i] !='\0')
 	{
 		if (str2[i] != '%' && str2[i])
+		{
 			ft_putchar_fd(str2[i], 1);
+			flags->ret_val++;
+		}
 		else if (str2[i] == '%')
 		{
 			flags_initialiser(flags);
@@ -30,12 +34,8 @@ int		type_reader(char *str, int i, va_list args, t_modifiers *flags)
 			{
 				i = i + 1;
 				if (ft_strchr(CONVERSIONS, str2[i]))
-				{
 					conversions(str2[i], i, args, flags);
-					break;
-				}
 				else if (ft_strchr(FLAGS, str2[i]))
-
 					flag_parser(str2, i, args, flags);
 			}
 		}
@@ -59,42 +59,6 @@ int	conversions(char str2_i, int i, va_list args, t_modifiers *flags)
 		percent_output(str2_i, i, args, flags);
 	else if (str2_i == 's')
 		string_output(str2_i, i, args, flags);
-
-	char_reader(str2_i, args);
 	flags_initialiser(flags);
 	return (0);
-}
-
-int		char_reader(char str2_i, va_list args)
-{
-	char				*str3;
-	unsigned long		addr;
-	char *str;
-
-	/* if (str2_i == 'c')
-	{
-		ft_putchar_fd(va_arg(args, int), 1);
-		return (1);
-	}
-	 if (str2_i == 's')
-	{
-		str3 = va_arg(args, char *);
-		ft_putstr_fd(str3, 1);
-		return (1);
-	}
-	if (str2_i == 'p')
-	{
-		addr = va_arg(args, unsigned long int);
-		write(1, "0x", 2);
-		str = ft_ltoa_hex(addr);
-		ft_putstr_fd(str, 1);
-		free(str);
-		return (1);
-	}
-	else if (str2_i == '%')
-	{
-		ft_putchar_fd('%', 1);
-		return (1);
-	} */
-	return(0);
 }
