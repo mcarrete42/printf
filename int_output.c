@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:24:59 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/13 19:49:04 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/19 13:55:34 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		int_output(char str2_i, int i, va_list args, t_modifiers *flags)
 	char			*str_int;
 	int				arg_int;
 
+	flags->conversion = str2_i;
 	if (str2_i == 'd' || str2_i == 'i')
 		str_int = ft_itoa(va_arg(args, int));
 	else if (str2_i == 'u')
@@ -24,9 +25,9 @@ int		int_output(char str2_i, int i, va_list args, t_modifiers *flags)
 	if (flags->is_precision == 1)
 		str_int = is_precision(str_int, args, flags);
 	if (flags->width > ft_strlen(str_int))
-		is_width(arg_int, str_int, args, flags);
-	else
-		ft_putstr_fd(str_int, 1);
+		str_int = is_width(arg_int, str_int, args, flags);
+	ft_putstr_fd(str_int, 1);
+	free(str_int);
 	return (0);
 }
 
@@ -45,18 +46,22 @@ char	*is_precision(char *str_int, va_list args, t_modifiers *flags)
 	return(str_int);
 }
 
-int		is_width(int arg_int, char *str_int, va_list args, t_modifiers *flags)
+char		*is_width(int arg_int, char *str_int, va_list args, t_modifiers *flags)
 {
 	int padding;
 	char *pad_char;
 	char *str_join;
 
 	padding = flags->width - ft_strlen(str_int);
-	if ((flags->plus == 1 && flags->zero == 0) ||
-		(flags->space == 1 && flags->zero == 0))
+	if (flags->conversion == 'd' || flags->conversion == 'i'
+		|| flags->conversion == 'f')
 	{
-		padding = padding - 1;
-		str_int = plus_space(arg_int, str_int, flags);
+		if ((flags->plus == 1 && flags->zero == 0) ||
+		(flags->space == 1 && flags->zero == 0))
+		{
+			padding = padding - 1;
+			str_int = plus_space(arg_int, str_int, flags);
+		}
 	}
 	if(!(pad_char = malloc(sizeof(char) * padding)))
 		return(0);
@@ -65,15 +70,16 @@ int		is_width(int arg_int, char *str_int, va_list args, t_modifiers *flags)
 		str_join = ft_strjoin(pad_char, str_int);
 	else if (flags->minus == 1)
 		str_join = ft_strjoin(str_int, pad_char);
-	ft_putstr_fd(str_join, 1);
 	free(pad_char);
-	return (0);
+	return (str_join);
 }
 
 char	*plus_space(int arg_int, char *str_int, t_modifiers *flags)
 {
 	if (arg_int >= 0 && flags->plus == 1)
-		str_int = ft_strjoin("+", str_int);
+	{
+			str_int = ft_strjoin("+", str_int);
+	}
 	else if (arg_int >= 0 && flags->space == 1 && flags->zero == 0)
 		str_int = ft_strjoin(" ", str_int);
 	return (str_int);
@@ -88,13 +94,11 @@ char	*zero_load(char *pad_char, int padding, int arg_int, t_modifiers *flags)
 	if (arg_int >= 0 && flags->space == 1 && flags->zero == 1)
 		pad_char[0] = ' ';
 	if (arg_int >= 0 && flags->plus == 1 && flags->zero == 1)
+	{
+		if(flags->conversion == 'u')
+			return (pad_char);
+		else
 		pad_char[0] = '+';
+	}
 	return (pad_char);
 }
-
-
-/*
-para el unsigned int:
-	if (str2_i == 'u')
-		ft_putnbr_fd(va_arg(args, unsigned int), 1);
-*/

@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/29 23:01:24 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/10 18:41:38 by mcarrete         ###   ########.fr       */
+/*   Created: 2020/01/16 17:07:47 by mcarrete          #+#    #+#             */
+/*   Updated: 2020/01/16 17:08:14 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <libft.h>
 
 void	ft_puthex_fd(int n, int fd)
 {
@@ -47,19 +47,5 @@ void	ft_puthex_upper_fd(int n, int fd)
 		ft_puthex_upper_fd(nb / 16, fd);
 	rem = nb % 16;
 	c = rem < 10 ? (char)rem + '0' : (char)rem + '7';
-	write(fd, &c, 1);
-}
-
-void	ft_putptr_fd(unsigned long n, int fd)
-{
-	unsigned long 	nb;
-	char			c;
-	unsigned long 	rem;
-
-	nb = n;
-	if (nb > 15)
-		ft_putptr_fd(nb / 16, fd);
-	rem = nb % 16;
-	c = rem < 10 ? (char)rem + '0' : (char)rem + 'W';
 	write(fd, &c, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 13:55:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/13 18:52:13 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/19 13:44:49 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void		flag_reader(char *str2, t_modifiers *flags)
 void	flags_initialiser(t_modifiers *flags)
 {
 	flags->minus = 0;
+	flags->conversion = 0;
 	flags->zero = 0;
 	flags->precision = 0;
 	flags->star = 0;
@@ -53,6 +54,8 @@ void	flags_initialiser(t_modifiers *flags)
 	flags->plus = 0;
 	flags->width = 0;
 	flags->is_precision = 0;
+	flags->float_dec = 0;
+	flags->float_non_dec = 0;
 }
 
 void	precision_definer(char *str2, va_list args, t_modifiers *flags)
@@ -79,6 +82,8 @@ void	precision_definer(char *str2, va_list args, t_modifiers *flags)
 				flags->precision = precision;
 			else if (precision < 0)
 				flags->precision = 0;
+			else if (precision == 0)
+				flags->precision = 1;
 			while (str2[i] == '*')
 				i++;
 		}
@@ -100,6 +105,6 @@ void	width_definer(char *str2, va_list args, t_modifiers *flags)
 		flags->width = atoi(&str2[flags->i]);
 		flags->i++;
 	}
-	else
+	else if (str2[flags->i] != '.')
 		flags->i++;
 }

@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 18:27:18 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/13 19:45:52 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/19 13:09:22 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ char				*ft_itoa(int n)
 
 char				*ft_ltoa(long int n)
 {
-	char			*c;
-	int				buff;
-	int				is_negative;
-	long int		nb;
-	int				i;
+	char				*c;
+	int					buff;
+	int					is_negative;
+	long int			nb;
+	int					i;
 
 	is_negative = (n < 0 ? -1 : 1);
 	nb = (is_negative == -1 ? -n : n);
@@ -99,4 +99,23 @@ char				*ft_ltoa(long int n)
 	c[i] = '\0';
 	ft_reverse(c, buff);
 	return (c);
+}
+
+char				*ft_doubletoa(long double n)
+{
+	int		in;
+	int		dif;
+	char	*ent;
+	char	*dec;
+
+	in = n;
+	dif = (n - in) * 1000000;
+	if ((dif) > 0)
+	{
+		ent = ft_itoa(in);
+		dec = ft_itoa(dif);
+	}
+	ent = ft_strjoin(ent, ".");
+	ent = ft_strjoin(ent, dec);
+	return (ent);
 }

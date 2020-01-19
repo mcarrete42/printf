@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:27:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/13 19:51:16 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/19 16:01:37 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ int		main()
 	int				starprec;
 
 	starprec = 3;
-	starwidth = 6;
+	starwidth = 7;
 	ptr = &four;
 	un = 10;
 	e = 333.1416182432565656565654;
 	A = 'A';
-	str = "hola que tal";
+	str = "hola";
 	one = 100000;
-	four = 123000;
+	four =12341;
 	//ft_printf("nada\n");
 	//printf("%+ 5d", un);
 
@@ -63,8 +63,8 @@ int		main()
 	//ft_printf("MY FT_PRINTF:\nThis is my int: %d\nAnd this is my char: %c\n\n", one, A);
 	//printf("PRINTF:\nThis is my int: %d\nAnd this is my char: %c\n\n", one, A);
 
-	ft_printf("MY FT_PRINTF:\nDecimal: %*d\nInt: %4i\nChar: %c\nString: %s\nFloat: %f\nUnsigned Int: %-10u\nHex: %x\nHEX: %X\nPointer: %p\n\n", starwidth, four, one, A, str, e, un, four, four, ptr);
-	printf("\nPRINTF:\nDecimal: %*d\nInt: %'i\nChar: %c\nString: %s\nFloat: %f\nUnsigned Int: %-10u\nHex: %x\nHEX: %X\nPointer: %p\n\n", starwidth, four, one, A, str, e, un, four, four, ptr);
+	ft_printf("\nPRINTF:\nDecimal: %2d\nInt: %4i\nChar: %03c\nString: %-08s\nFloat: %.2f\nUnsigned Int: %u\nHex: %#x\nHEX: %#X\nPointer: %p\nPercent: %3%\n\n", four, one, A, str, e, un, four,four, ptr);
+	printf("\nPRINTF:\nDecimal: %2d\nInt: %4i\nChar: %03c\nString: %-08s\nFloat: %.2f\nUnsigned Int: %u\nHex: %#x\nHEX: %#X\nPointer: %p\nPercent: %3%\n\n", four, one, A, str, e, un, four,four, ptr);
 	//printf("\nMy STUCT:\nlen: %d\nMinus:\nZero %d\nPrecision: %d     is_precision: %d\nStar: %d\nHash: %d\nSpace: %d\nPlus: %d\nLenght: %d\nWidth: %d      is_width: %d\n", flags->len, flags->minus, flags->zero, flags->precision, flags->is_precision, flags->star, flags->hash, flags->space, flags->plus, flags->length, flags->width, flags->is_width);
 }
 
