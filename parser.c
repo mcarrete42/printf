@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 17:23:29 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/19 21:33:20 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/19 21:55:43 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int		type_reader(char *str, int i, va_list args, t_modifiers *flags)
 			flags_initialiser(flags);
 			if (!ft_strchr(CONVANDFLAGS, str[i + 1]))
 				break;
+			if (ft_strlen(str2) == 1 || !(ft_strchr(CONVANDFLAGS, str2[i + 1])))
+				ft_putstr_fd("", 1);
 			while (ft_strchr(CONVANDFLAGS, str2[i + 1]))
 			{
 				i = i + 1;
