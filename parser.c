@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 17:23:29 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/19 19:00:29 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/19 21:33:20 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ int		type_reader(char *str, int i, va_list args, t_modifiers *flags)
 			{
 				i = i + 1;
 				if (ft_strchr(CONVERSIONS, str2[i]))
+				{
 					conversions(str2[i], i, args, flags);
+					break;
+				}
 				else if (ft_strchr(FLAGS, str2[i]))
 					flag_parser(str2, i, args, flags);
 			}

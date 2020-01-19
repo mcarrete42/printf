@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:27:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/19 18:43:38 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/19 19:42:37 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int		ft_printf(const char *str, ...)
 	va_start(args, str);
 	type_reader(str2, i, args, flags);
 	va_end(args);
+	ret = flags->ret_val;
 	free(flags);
-	return (flags->ret_val);
+	return (ret);
 }
 
