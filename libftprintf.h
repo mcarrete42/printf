@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/19 18:03:28 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/20 20:15:40 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct 	s_modifiers
 	int		float_dec;
 	int		float_non_dec;
 	int		ret_val;
+	int		error;
 }			t_modifiers;
 
 #ifndef LIBFTPRINTF_H
@@ -53,6 +54,7 @@ typedef struct 	s_modifiers
 
 int		ft_printf(const char *str, ...);
 
+
 /*
 ** ---------------------PRINT OUTPUT OF CONVERSIONS + FLAGS--------------------
 */
@@ -69,6 +71,7 @@ char	*float_precision(char *str_int, va_list args, t_modifiers *flags);
 char	*round_and_break(char *str_flo, int i);
 void	calculate_lenghts(char *str_flo, t_modifiers *flags);
 int		string_flags(char *str, va_list args, t_modifiers *flags);
+char	*string_precision(char *str, t_modifiers *flags);
 int		char_flags(char a, va_list args, t_modifiers *flags);
 
 
@@ -76,7 +79,8 @@ int		char_flags(char a, va_list args, t_modifiers *flags);
 ** ------------------------PARSE CONVERSIONS ----------------------------------
 */
 
-int		type_reader(char *str, int i, va_list args, t_modifiers *flags);
+void	type_reader(char *str, int i, va_list args, t_modifiers *flags);
+void	check_error(t_modifiers *flags);
 int		int_output(char str2_i, int i, va_list args, t_modifiers *flags);
 int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags);
 int		float_output(char str2_i, int i, va_list args, t_modifiers *flags);
@@ -94,6 +98,7 @@ int		flag_parser(char *str2, int i, va_list args, t_modifiers *flags);
 void	flag_reader(char *str2, t_modifiers *flags);
 void	flags_initialiser(t_modifiers *flags);
 void	precision_definer(char *str2, va_list args, t_modifiers *flags);
+void	star_precision(int precision, va_list args, t_modifiers *flags);
 void	width_definer(char *str2, va_list args, t_modifiers *flags);
 
 #endif

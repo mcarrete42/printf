@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:27:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/19 19:42:37 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:52:10 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,3 @@ int		ft_printf(const char *str, ...)
 	free(flags);
 	return (ret);
 }
-

@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 13:29:42 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/19 21:37:56 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:23:20 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ int		char_flags(char a, va_list args, t_modifiers *flags)
 {
 	char	*str_char;
 	int		padding;
+
 	if (flags->conversion == 'c' || flags->conversion == '%')
 		padding = flags->width - 1;
 	if (!(str_char = (malloc(sizeof(char) * padding))))
-		return(0);
+		return (0);
 	if (flags->zero == 0)
 		ft_bspace(str_char, padding);
 	else if (flags->zero == 1)
