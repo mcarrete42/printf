@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:24:59 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/20 21:24:19 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:19:06 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,19 @@ int		int_output(char str2_i, int i, va_list args, t_modifiers *flags)
 		str_int = ft_itoa(va_arg(args, int));
 	else if (str2_i == 'u')
 		str_int = ft_ltoa(va_arg(args, unsigned int));
+	if (str_int[0] == '-')
+	{
+		str_int = ft_substr(str_int, 1, ft_strlen(str_int) - 1);
+		flags->is_negative = 1;
+	}
 	if (flags->is_precision == 1)
 		str_int = is_precision(str_int, args, flags);
 	if (flags->width > ft_strlen(str_int))
 		str_int = is_width(arg_int, str_int, args, flags);
+	if (flags->is_negative == 1 && !(flags->width > flags->precision))
+		str_int[0] = '-';
+	if (flags->is_negative == 1 && flags->width > flags->precision)
+		str_int[(flags->width - flags->precision) - 1] = '-';
 	ft_putstr_fd(str_int, 1);
 	flags->ret_val = flags->ret_val + ft_strlen(str_int);
 	free(str_int);
@@ -39,7 +48,10 @@ char	*is_precision(char *str_int, va_list args, t_modifiers *flags)
 
 	if (flags->precision <= ft_strlen(str_int))
 		return (str_int);
-	zero_num = flags->precision - ft_strlen(str_int);
+	zero_num = flags->is_negative == 0 ? flags->precision - ft_strlen(str_int)
+		: (flags->precision - ft_strlen(str_int) + 1);
+	if (flags->width > flags->precision && flags->is_negative == 1)
+		zero_num = flags->precision - ft_strlen(str_int);
 	if (!(pad_zero = malloc(sizeof(char) * zero_num)))
 		return (NULL);
 	ft_bzeroes(pad_zero, zero_num);

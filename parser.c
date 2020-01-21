@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 17:23:29 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/20 19:43:03 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:38:40 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	flags_initialiser(t_modifiers *flags)
 	flags->float_dec = 0;
 	flags->float_non_dec = 0;
 	flags->error = 0;
+	flags->is_negative = 0;
 }
 
 void	check_error(t_modifiers *flags)

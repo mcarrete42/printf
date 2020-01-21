@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/20 20:15:40 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:20:15 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct 	s_modifiers
 	int		float_non_dec;
 	int		ret_val;
 	int		error;
+	int		is_negative;
 }			t_modifiers;
 
 #ifndef LIBFTPRINTF_H
@@ -67,12 +68,10 @@ char	*is_width(int arg_int, char *str_int, va_list args, t_modifiers *flags);
 char	*plus_space(int arg_int, char *str_int, t_modifiers *flags);
 char	*zero_load(char *pad_char, int padding, int arg_int, t_modifiers *flags);
 char	*is_precision(char *str_int, va_list args, t_modifiers *flags);
-char	*float_precision(char *str_int, va_list args, t_modifiers *flags);
-char	*round_and_break(char *str_flo, int i);
-void	calculate_lenghts(char *str_flo, t_modifiers *flags);
 int		string_flags(char *str, va_list args, t_modifiers *flags);
 char	*string_precision(char *str, t_modifiers *flags);
 int		char_flags(char a, va_list args, t_modifiers *flags);
+char	*ft_doubletoa(long double n, t_modifiers *flags);
 
 
 /*

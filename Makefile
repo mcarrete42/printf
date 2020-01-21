@@ -6,7 +6,7 @@
 #    By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/29 23:29:42 by mcarrete          #+#    #+#              #
-#    Updated: 2020/01/20 21:19:07 by mcarrete         ###   ########.fr        #
+#    Updated: 2020/01/21 20:21:09 by mcarrete         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ SRC				= libftprintf.c ft_putdouble.c parser.c flag_parser.c \
 SRC_LIB_PATH	= ./libft
 SRC_LIB_NAME	= ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_strlen.c \
 					ft_itoa.c ft_strchr.c ft_atoi.c ft_isdigit.c ft_isspace.c ft_bspace.c \
-					ft_strjoin.c ft_bzero.c ft_toupper.c ft_itoa_hex.c ft_islower.c
+					ft_strjoin.c ft_bzero.c ft_toupper.c ft_itoa_hex.c ft_islower.c \
+					ft_substr.c
 SRC_LIB			= $(addprefix $(SRC_LIB_PATH)/$(SRC_LIB_NAME))
 OBJ				= $(SRC:.c=.o)
 OBJ_LIB 		= $(SRC_LIB_NAME:.c=.o)
@@ -29,7 +30,7 @@ INCLUDES_LIB	= ./libft
 all: $(NAME)
 
 $(NAME):	$(OBJ) $(OBJ_LIB)
-	gcc -o $(NAME) $(OBJ) $(OBJ_LIB)
+	ar -rcs $(NAME) $(OBJ) $(OBJ_LIB)
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) -o $@ $< -I $(INCLUDES)

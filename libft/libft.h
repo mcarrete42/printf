@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 20:50:32 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/18 11:01:15 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/21 20:18:57 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,13 @@ char	*ft_strstr(char *str, char *to_find);
 int		ft_super_atoi(char *str);
 void	ft_bspace(void *s, size_t n);
 void	ft_bzeroes(void *s, size_t n);
-char	*ft_ltoa(long int n);
+char	*ft_ltoa(long long int n);
 void	ft_puthex_upper_fd(int n, int fd);
 void	ft_puthex_fd(int n, int fd);
 void	ft_putdouble_fd(double n, int fd);
 char	*ft_itoa_hex(int n);
 char	*ft_itoa_hex_upper(int n);
 char	*ft_ltoa_hex(unsigned long long n);
-char	*ft_doubletoa(long double n);
 
 
 #endif
