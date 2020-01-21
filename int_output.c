@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:24:59 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/21 23:31:48 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/21 23:46:39 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int		int_output(char str2_i, int i, va_list args, t_modifiers *flags)
 		str_int = ft_itoa(va_arg(args, int));
 	else if (str2_i == 'u')
 		str_int = ft_ltoa(va_arg(args, unsigned int));
-	if (str_int[0] == '-' && flags->is_precision == 1)
+	/*if (str_int[0] == '-' && flags->is_precision == 1)
 	{
 		str_int = ft_substr(str_int, 1, ft_strlen(str_int) - 1);
 		flags->is_negative = 1;
-	}
+	} */
 	if (flags->is_precision == 1)
 		str_int = is_precision(str_int, args, flags);
 	if (flags->width > ft_strlen(str_int))
