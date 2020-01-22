@@ -6,9 +6,15 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 20:50:32 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/21 20:18:57 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/22 19:25:22 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct		s_list
 {
@@ -18,11 +24,6 @@ typedef struct		s_list
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
-# include <unistd.h>
-# include <string.h>
-# include <stdio.h>
-# include <stdlib.h>
 
 void	*ft_memset(void *str, int c, size_t n);
 void	ft_bzero(void *s, size_t n);

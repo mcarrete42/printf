@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 23:01:24 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/19 18:34:01 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/22 19:26:25 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,20 @@ int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags)
 		arg_hex = va_arg(args, unsigned int);
 	else if (str2_i == 'p')
 		arg_hex = va_arg(args, unsigned long int);
-	if (str2_i == 'x')
+	//printf("my arg_hex es: %d", arg_hex);
+	if (arg_hex != 0 && str2_i == 'x')
 		hex_str = ft_itoa_hex(arg_hex);
-	else if (str2_i == 'X')
+	else if (arg_hex != 0 && str2_i == 'X')
 		hex_str = ft_itoa_hex_upper(arg_hex);
-	else if (str2_i == 'p')
+	else if (arg_hex == 0 && str2_i == 'X' || (arg_hex == 0 && str2_i == 'x'))
+		hex_str = ft_strdup("0");
+	else if (arg_hex != 0 && str2_i == 'p')
 	{
 		hex_str = ft_ltoa_hex(arg_hex);
 		hex_str = ft_strjoin("0x", hex_str);
 	}
+	else if (arg_hex == 0 && str2_i == 'p')
+		hex_str = ft_strdup("0x0");
 	if (flags->is_precision == 1)
 		hex_str = is_precision(hex_str, args, flags);
 	if (flags->width > ft_strlen(hex_str))
