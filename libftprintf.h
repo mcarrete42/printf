@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/21 20:20:15 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:26:32 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,7 @@ void	flags_initialiser(t_modifiers *flags);
 void	precision_definer(char *str2, va_list args, t_modifiers *flags);
 void	star_precision(int precision, va_list args, t_modifiers *flags);
 void	width_definer(char *str2, va_list args, t_modifiers *flags);
+char	*manage_negative(char *str_int, t_modifiers *flags);
+
 
 #endif
