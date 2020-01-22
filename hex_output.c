@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 23:01:24 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/22 19:26:25 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/22 20:04:16 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags)
 		arg_hex = va_arg(args, unsigned int);
 	else if (str2_i == 'p')
 		arg_hex = va_arg(args, unsigned long int);
-	//printf("my arg_hex es: %d", arg_hex);
+	//printf("my arg_hex es: %lu\n", arg_hex);
 	if (arg_hex != 0 && str2_i == 'x')
 		hex_str = ft_itoa_hex(arg_hex);
 	else if (arg_hex != 0 && str2_i == 'X')
@@ -32,13 +32,24 @@ int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags)
 		hex_str = ft_strdup("0");
 	else if (arg_hex != 0 && str2_i == 'p')
 	{
-		hex_str = ft_ltoa_hex(arg_hex);
+		if (arg_hex != 0)
+			hex_str = ft_ltoa_hex(arg_hex);
+		else
+			hex_str = ft_strdup("");
 		hex_str = ft_strjoin("0x", hex_str);
 	}
 	else if (arg_hex == 0 && str2_i == 'p')
 		hex_str = ft_strdup("0x0");
-	if (flags->is_precision == 1)
+	//printf("my precision is: %d\n", flags->precision);
+	if ((flags->is_precision == 1 && str2_i == 'x') ||(flags->is_precision == 1 && str2_i == 'X'))
 		hex_str = is_precision(hex_str, args, flags);
+	else if (flags->is_precision == 1 && str2_i == 'p')
+	{
+		if (arg_hex == 0 && flags->is_precision == 1 && flags->precision == 0)
+			hex_str = ft_strdup("0x");
+		else if (flags->is_precision == 1 && flags->precision == 0)
+			flags->is_precision = 0;
+	}
 	if (flags->width > ft_strlen(hex_str))
 		hex_str = is_width(arg_hex, hex_str, args, flags);
 	if (flags->conversion == 'x' && flags->hash == 1 && arg_hex != 0)

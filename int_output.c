@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:24:59 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/22 19:06:57 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/22 19:56:00 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*is_width(int arg_int, char *str_int, va_list args, t_modifiers *flags)
 	}
 	if (flags->is_negative == 1 && flags->width > 9 &&
 		flags->width > flags->precision && flags->minus == 1)
-		padding = padding - 1;  //Sin esto se arrega el 184: %-8.3i
+		padding = padding - 1;
 	if (!(pad_char = malloc(sizeof(char) * padding)))
 		return (0);
 	pad_char = zero_load(pad_char, padding, arg_int, flags);
