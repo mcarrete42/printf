@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/22 18:44:17 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/22 21:34:41 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct 	s_modifiers
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 # define CONVANDFLAGS "cspdiouxXfyb%-0.*#’ +lh0123456789"
-# define FLAGS "-0.*#’ +lh0123456789"
+# define FLAGS "-0.*#’ +0123456789"
 # define CONVERSIONS "cspdiouxXfyb%"
 
 # include <unistd.h>

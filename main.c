@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 17:40:58 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/22 19:59:28 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/22 21:30:55 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int		main()
 	printf("\nMy ret: %d\n Original_ret %d\n", my_ret, original_ret);*/
 
 
-	my_ret = ft_printf("%.p", ptr);
-	original_ret = printf("%.p", ptr);
+	my_ret = ft_printf("%-*.*s", 7, 3, "yolo");
+	original_ret = printf("%-*.*s", 7, 3, "yolo");
 	printf("\nMy ret: %d\n Original_ret %d\n", my_ret, original_ret);
 
 	//ft_printf("MY FT_PRINTF:\nThis is my first int: %d\nAnd this is my second int: %d\n\n", one, four);
