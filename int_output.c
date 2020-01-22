@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:24:59 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/22 18:47:12 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/22 19:06:57 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		int_output(char str2_i, int i, va_list args, t_modifiers *flags)
 		if (flags->width > ft_strlen(str_int))
 			str_int = is_width(arg_int, str_int, args, flags);
 	}
-	/*
+/*
 	printf("mi str_int  after manage es : %s\n", str_int);
 	printf("mi precision: %d\n", flags->precision);
 	printf("mi is_precision: %d\n", flags->is_precision);
@@ -92,10 +92,10 @@ char	*is_width(int arg_int, char *str_int, va_list args, t_modifiers *flags)
 			padding = padding - 1;
 			str_int = plus_space(arg_int, str_int, flags);
 		}
-	}/*
-	if (flags->is_negative == 1 &&
+	}
+	if (flags->is_negative == 1 && flags->width > 9 &&
 		flags->width > flags->precision && flags->minus == 1)
-		padding = padding - 1;  Sin esto se arrega el 184: %-8.3i */
+		padding = padding - 1;  //Sin esto se arrega el 184: %-8.3i
 	if (!(pad_char = malloc(sizeof(char) * padding)))
 		return (0);
 	pad_char = zero_load(pad_char, padding, arg_int, flags);
