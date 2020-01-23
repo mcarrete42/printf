@@ -6,14 +6,14 @@
 #    By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/29 23:29:42 by mcarrete          #+#    #+#              #
-#    Updated: 2020/01/23 16:59:53 by mcarrete         ###   ########.fr        #
+#    Updated: 2020/01/23 17:51:17 by mcarrete         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= libftprintf.a
 SRC				= libftprintf.c ft_putdouble.c parser.c flag_parser.c \
 					int_output.c hex_output.c float_output.c char_output.c \
-					string_output.c main.c
+					string_output.c aux.c
 SRC_LIB_PATH	= ./libft
 SRC_LIB_NAME	= ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_strlen.c \
 					ft_itoa.c ft_strchr.c ft_atoi.c ft_isdigit.c ft_isspace.c ft_bspace.c \
