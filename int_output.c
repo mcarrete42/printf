@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:24:59 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/23 16:54:43 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:23:26 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,10 @@ int		int_output(char str2_i, int i, va_list args, t_modifiers *flags)
 	else if (str2_i == 'u')
 		str_int = ft_ltoa(va_arg(args, unsigned int));
 	str_arg = str_int;
-	//printf("mi str_int es : %s\n", str_int);
 	if (str_int[0] == '-')
 		flags->is_negative = 1;
 	if (flags->is_precision == 0 && flags->precision != 0)
 		flags->precision = 0;
-	//printf("mi precision: %d\n", flags->precision);
 	if ((flags->is_negative == 1 && flags->precision > ft_strlen(str_int)) ||
 	(flags->is_negative == 1 && flags->width > ft_strlen(str_arg) && flags->zero == 1))
 		str_int = ft_substr(str_int, 1, ft_strlen(str_int) - 1);
@@ -47,11 +45,6 @@ int		int_output(char str2_i, int i, va_list args, t_modifiers *flags)
 		if (flags->width > ft_strlen(str_int))
 			str_int = is_width(arg_int, str_int, args, flags);
 	}
-/*
-	printf("mi str_int  after manage es : %s\n", str_int);
-	printf("mi precision: %d\n", flags->precision);
-	printf("mi is_precision: %d\n", flags->is_precision);
-*/
 	ft_putstr_fd(str_int, 1);
 	flags->ret_val = flags->ret_val + ft_strlen(str_int);
 	free(str_int);
@@ -139,20 +132,15 @@ char	*zero_load(char *pad_char, int padding, int arg_int, t_modifiers *flags)
 
 char	*manage_negatives(char *str_int, char *str_arg, t_modifiers *flags)
 {
-	//printf("mi str_int  after precision es : %s\n", str_int);
-	//printf("mi str_int  after width es : %s\n", str_int);
 	if ((flags->is_negative == 1 && !(flags->width > flags->precision)
 	&& flags->precision > ft_strlen(str_arg)) ||
 	(flags->is_negative && flags->width > flags->precision && flags->zero == 1))
 		str_int[0] = '-';
-	//printf("mi str_int  after '-' en 0 es : %s\n", str_int);
 	if (flags->is_negative == 1 && flags->is_precision == 1 &&
 		flags->width > flags->precision && flags->minus == 0 && flags->zero == 0)
 		str_int[(flags->width - flags->precision) - 1] = '-';
-	//printf("mi str_int  after '-' en w-p-1 es : %s\n", str_int);
 	if (flags->is_negative == 1 && flags->width > flags->precision
 	&& flags->minus == 1 && str_int[0] != '-')
 		str_int = ft_strjoin("-", str_int);
-	//printf("mi str_int  after '-' join: %s\n", str_int);
 	return (str_int);
 }

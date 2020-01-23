@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 17:26:31 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/22 19:16:04 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:24:58 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_itoa_hex(int n)
 {
-	unsigned	int		nb;
-	char				*str;
-	unsigned long 		rem;
-	int 				i;
+	unsigned	int			nb;
+	char					*str;
+	unsigned long			rem;
+	int						i;
 
 	nb = n;
 	i = 0;
@@ -26,7 +26,7 @@ char	*ft_itoa_hex(int n)
 		nb = nb / 16;
 		i++;
 	}
-	if(!(str = (char *)malloc(sizeof(char ) * (i + 1))))
+	if (!(str = (char *)malloc(sizeof(char ) * (i + 1))))
 		return (NULL);
 	str[i] = '\0';
 	i--;
@@ -45,8 +45,8 @@ char	*ft_itoa_hex_upper(int n)
 {
 	unsigned	int		nb;
 	char				*str;
-	unsigned long 		rem;
-	int 				i;
+	unsigned long		rem;
+	int					i;
 
 	nb = n;
 	i = 0;
@@ -55,7 +55,7 @@ char	*ft_itoa_hex_upper(int n)
 		nb = nb / 16;
 		i++;
 	}
-	if(!(str = (char *)malloc(sizeof(char ) * (i + 1))))
+	if (!(str = (char *)malloc(sizeof(char ) * (i + 1))))
 		return (NULL);
 	str[i] = '\0';
 	i--;
@@ -74,8 +74,8 @@ char	*ft_ltoa_hex(unsigned long long n)
 {
 	unsigned long long	nb;
 	char				*str;
-	unsigned long 		rem;
-	int 				i;
+	unsigned long		rem;
+	int					i;
 
 	nb = n;
 	i = 0;
@@ -84,7 +84,7 @@ char	*ft_ltoa_hex(unsigned long long n)
 		nb = nb / 16;
 		i++;
 	}
-	if(!(str = (char *)malloc(sizeof(char ) * (i + 1))))
+	if (!(str = (char *)malloc(sizeof(char ) * (i + 1))))
 		return (NULL);
 	str[i] = '\0';
 	i--;

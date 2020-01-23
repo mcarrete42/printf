@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/22 21:34:41 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:26:29 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int		string_flags(char *str, va_list args, t_modifiers *flags);
 char	*string_precision(char *str, t_modifiers *flags);
 int		char_flags(char a, va_list args, t_modifiers *flags);
 char	*ft_doubletoa(long double n, t_modifiers *flags);
+double	ft_ten_power(int n);
+
 
 
 /*

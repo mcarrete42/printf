@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 15:18:46 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/20 21:15:15 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:22:41 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,3 @@ char	*string_precision(char *str, t_modifiers *flags)
 		strdup = str;
 	return (strdup);
 }
-

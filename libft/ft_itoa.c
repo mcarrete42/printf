@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 18:27:18 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/21 20:16:41 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:23:56 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int			ft_len_calc(size_t nb)
 	return (i);
 }
 
-char			*ft_reverse(char *c, int buff)
+char				*ft_reverse(char *c, int buff)
 {
 	int		i;
 	int		j;

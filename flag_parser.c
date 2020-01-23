@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 13:55:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/23 16:54:48 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:22:48 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int		flag_parser(char *str2, int i, va_list args, t_modifiers *flags)
 {
-	//printf("hola\n");
-
 	flags->i = i;
 	flag_reader(str2, flags);
 	width_definer(str2, args, flags);
@@ -49,16 +47,13 @@ void	precision_definer(char *str2, va_list args, t_modifiers *flags)
 {
 	int precision;
 	int i;
-//	printf("idfdfd\n");
 
 	i = flags->i;
-	//printf("%d\n", i);
 	if (str2[i] == '.' && flags->is_precision == 0 && flags->precision == 0)
 	{
 		flags->is_precision = 1;
 		flags->zero = 0;
 		i++;
-		//	printf("%s\n", str2 + i);
 		if (str2[i] >= '0' && str2[i] <= '9')
 		{
 			flags->precision = ft_atoi(&str2[i]);
@@ -72,34 +67,19 @@ void	precision_definer(char *str2, va_list args, t_modifiers *flags)
 				i++;
 		}
 	}
-	//	printf("2-%d\n", i);
 	flags->i = i;
 }
 
 void	star_precision(int precision, va_list args, t_modifiers *flags)
 {
-	//printf("FUERA is_pre %d\n", flags->is_precision);
-	//printf("FUERA pre %d\n", flags->precision);
 	precision = va_arg(args, int);
 	flags->precision = precision;
-	//printf("DENTRO antes flag precision %d\n", flags->precision);
 	if (flags->precision < 0)
 		flags->is_precision = 0;
-	//printf("DEspues flag precision %d\n", flags->precision);
-
-/*
-		else if (precision == 0)
-			flags->precision = 1;*/
-		//printf("dentro despues is_pre %d\n", flags->is_precision);
-		//printf("dentro despues %d\n", flags->precision);
 }
-
-
 
 void	width_definer(char *str2, va_list args, t_modifiers *flags)
 {
-	//printf("int wi %d\n", flags->width);
-
 	if (flags->width == 0 && str2[flags->i] == '*' && str2[flags->i - 1] != '.')
 	{
 		flags->width = va_arg(args, int);

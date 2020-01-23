@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 23:01:24 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/22 20:04:16 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:24:06 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags)
 		arg_hex = va_arg(args, unsigned int);
 	else if (str2_i == 'p')
 		arg_hex = va_arg(args, unsigned long int);
-	//printf("my arg_hex es: %lu\n", arg_hex);
 	if (arg_hex != 0 && str2_i == 'x')
 		hex_str = ft_itoa_hex(arg_hex);
 	else if (arg_hex != 0 && str2_i == 'X')
@@ -40,7 +39,6 @@ int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags)
 	}
 	else if (arg_hex == 0 && str2_i == 'p')
 		hex_str = ft_strdup("0x0");
-	//printf("my precision is: %d\n", flags->precision);
 	if ((flags->is_precision == 1 && str2_i == 'x') ||(flags->is_precision == 1 && str2_i == 'X'))
 		hex_str = is_precision(hex_str, args, flags);
 	else if (flags->is_precision == 1 && str2_i == 'p')

@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 17:23:29 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/22 21:35:53 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/23 17:22:33 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		type_reader(char *str2, int i, va_list args, t_modifiers *flags)
 	}
 }
 
-int		conversions(char str2_i, int i, va_list args, t_modifiers *flags)
+int			conversions(char str2_i, int i, va_list args, t_modifiers *flags)
 {
 	flags->i = i;
 	if (str2_i == 'd' || str2_i == 'i' || str2_i == 'u')
@@ -60,7 +60,7 @@ int		conversions(char str2_i, int i, va_list args, t_modifiers *flags)
 	return (0);
 }
 
-void	flags_initialiser(t_modifiers *flags)
+void		flags_initialiser(t_modifiers *flags)
 {
 	flags->minus = 0;
 	flags->conversion = 0;
@@ -78,7 +78,7 @@ void	flags_initialiser(t_modifiers *flags)
 	flags->is_negative = 0;
 }
 
-void	check_error(t_modifiers *flags)
+void		check_error(t_modifiers *flags)
 {
 	if (flags->ret_val <= 0)
 	{
@@ -86,7 +86,5 @@ void	check_error(t_modifiers *flags)
 		flags->error = 1;
 	}
 	else
-	{
 		flags->error = 0;
-	}
 }
