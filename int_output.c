@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 18:24:59 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/22 19:56:00 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/23 16:54:43 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ int		int_output(char str2_i, int i, va_list args, t_modifiers *flags)
 	else if (str2_i == 'u')
 		str_int = ft_ltoa(va_arg(args, unsigned int));
 	str_arg = str_int;
-//	printf("mi str_int es : %s\n", str_int);
+	//printf("mi str_int es : %s\n", str_int);
 	if (str_int[0] == '-')
 		flags->is_negative = 1;
+	if (flags->is_precision == 0 && flags->precision != 0)
+		flags->precision = 0;
+	//printf("mi precision: %d\n", flags->precision);
 	if ((flags->is_negative == 1 && flags->precision > ft_strlen(str_int)) ||
 	(flags->is_negative == 1 && flags->width > ft_strlen(str_arg) && flags->zero == 1))
 		str_int = ft_substr(str_int, 1, ft_strlen(str_int) - 1);
