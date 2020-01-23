@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 13:55:05 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/22 21:55:04 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/23 07:40:03 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	star_precision(int precision, va_list args, t_modifiers *flags)
 	if (precision >= 0)
 		flags->precision = precision;
 	else if (precision < 0)
-		flags->precision = 0;
+		flags->is_precision = 0;
 	else if (precision == 0)
 		flags->precision = 1;
 }
@@ -96,7 +96,11 @@ void	width_definer(char *str2, va_list args, t_modifiers *flags)
 	{
 		flags->width = va_arg(args, int);
 		if (flags->width < 0)
+		{
 			flags->minus = 1;
+			flags->zero = 0;
+			flags->width = -flags->width;
+		}
 		while (str2[flags->i] == '*')
 			flags->i++;
 	}
