@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 23:01:24 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/24 17:55:19 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/24 18:13:43 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags)
 {
 	unsigned long int arg_hex;
 	char *hex_str;
-	int j;
 
 	flags->conversion = str2_i;
 	if (str2_i == 'x' || str2_i == 'X')
@@ -27,7 +26,8 @@ int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags)
 		hex_str = ft_itoa_hex_upper(arg_hex);
 	else if ((arg_hex == 0 && str2_i == 'X') || (arg_hex == 0 && str2_i == 'x'))
 		hex_str = ft_strdup("0");
-	if ((flags->is_precision == 1 && str2_i == 'x') ||(flags->is_precision == 1 && str2_i == 'X'))
+	if ((flags->is_precision == 1 && str2_i == 'x') ||
+	(flags->is_precision == 1 && str2_i == 'X'))
 		hex_str = is_precision(hex_str, args, flags);
 	if (flags->width > ft_strlen(hex_str))
 		hex_str = is_width(arg_hex, hex_str, args, flags);
@@ -43,23 +43,17 @@ int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags)
 
 int		pointer_output(char str2_i, int i, va_list args, t_modifiers *flags)
 {
-	unsigned long int arg_ptr;
-	char *ptr_str;
-	int j;
-
+	unsigned long int	arg_ptr;
+	char 				*ptr_str;
 
 	flags->conversion = str2_i;
-	if (str2_i == 'p')
-		arg_ptr = va_arg(args, unsigned long int);
-	if (arg_ptr != 0 && str2_i == 'p')
+	arg_ptr = va_arg(args, unsigned long int);
+	if (arg_ptr != 0)
 	{
-		if (arg_ptr != 0)
-			ptr_str = ft_ltoa_hex(arg_ptr);
-		else
-			ptr_str = ft_strdup("");
+		ptr_str = (arg_ptr != 0) ? ft_ltoa_hex(arg_ptr) : ft_strdup("");
 		ptr_str = ft_strjoin("0x", ptr_str);
 	}
-	else if (arg_ptr == 0 && str2_i == 'p')
+	else if (arg_ptr == 0 && str2_i == 'p' && flags->is_precision == 0)
 		ptr_str = ft_strdup("0x0");
 	else if (flags->is_precision == 1 && str2_i == 'p')
 	{

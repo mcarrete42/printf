@@ -6,7 +6,7 @@
 #    By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/29 23:29:42 by mcarrete          #+#    #+#              #
-#    Updated: 2020/01/24 17:53:37 by mcarrete         ###   ########.fr        #
+#    Updated: 2020/01/24 18:04:28 by mcarrete         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ INCLUDES_LIB	= ./libft
 all: $(NAME)
 
 $(NAME):	$(OBJ) $(OBJ_LIB)
-	gcc -o $(NAME) $(OBJ) $(OBJ_LIB)
+	ar -rcs $(NAME) $(OBJ) $(OBJ_LIB)
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) -o $@ $< -I $(INCLUDES)
