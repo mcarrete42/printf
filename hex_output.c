@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 23:01:24 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/24 18:18:40 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/24 19:18:46 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags)
 int		pointer_output(char str2_i, int i, va_list args, t_modifiers *flags)
 {
 	unsigned long int	arg_ptr;
-	char 				*ptr_str;
+	char				*ptr_str;
 
 	flags->conversion = str2_i;
 	arg_ptr = va_arg(args, unsigned long int);

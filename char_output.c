@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/19 13:29:42 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/20 17:23:20 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/24 19:18:13 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	percent_output(char str2_i, int i, va_list args, t_modifiers *flags)
 
 	flags->conversion = str2_i;
 	a = str2_i;
-	if(flags->minus == 1 && flags->zero == 1)
+	if (flags->minus == 1 && flags->zero == 1)
 		flags->zero = 0;
 	if (flags->width > 1)
 		char_flags(a, args, flags);
