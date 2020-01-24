@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 17:12:10 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/23 17:47:22 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/24 17:45:01 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	check_error(t_modifiers *flags);
 int		int_input(char str2_i, int i, va_list args, t_modifiers *flags);
 int		int_out(char *str_int, char *str_arg, va_list args, t_modifiers *flags);
 int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags);
+int		pointer_output(char str2_i, int i, va_list args, t_modifiers *flags);
 int		float_output(char str2_i, int i, va_list args, t_modifiers *flags);
 void	char_output(char str2_i, int i, va_list args, t_modifiers *flags);
 void	percent_output(char str2_i, int i, va_list args, t_modifiers *flags);

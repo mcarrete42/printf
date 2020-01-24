@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 17:23:29 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/23 17:44:19 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/24 17:46:09 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ int			conversions(char str2_i, int i, va_list args, t_modifiers *flags)
 	flags->i = i;
 	if (str2_i == 'd' || str2_i == 'i' || str2_i == 'u')
 		int_input(str2_i, i, args, flags);
-	else if (str2_i == 'x' || str2_i == 'X' || str2_i == 'p')
+	else if (str2_i == 'x' || str2_i == 'X')
 		hex_output(str2_i, i, args, flags);
+	else if (str2_i == 'p')
+		pointer_output(str2_i, i, args, flags);
 	else if (str2_i == 'f')
 		float_output(str2_i, i, args, flags);
 	else if (str2_i == 'c')
