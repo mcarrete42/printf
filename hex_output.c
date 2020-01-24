@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 23:01:24 by mcarrete          #+#    #+#             */
-/*   Updated: 2020/01/24 18:13:43 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/24 18:18:40 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		hex_output(char str2_i, int i, va_list args, t_modifiers *flags)
 {
-	unsigned long int arg_hex;
-	char *hex_str;
+	unsigned long int	arg_hex;
+	char				*hex_str;
 
 	flags->conversion = str2_i;
 	if (str2_i == 'x' || str2_i == 'X')

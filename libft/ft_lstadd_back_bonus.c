@@ -6,7 +6,7 @@
 /*   By: mcarrete <mcarrete@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 19:00:22 by mcarrete          #+#    #+#             */
-/*   Updated: 2019/11/27 19:38:49 by mcarrete         ###   ########.fr       */
+/*   Updated: 2020/01/23 20:20:48 by mcarrete         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		while (current->next != NULL)
 			current = current->next;
 		current->next = new;
-		new->next = NULL;  //igual se puede quitar?
+		new->next = NULL;
 	}
 	else
-		*lst = new;  //sin esto, si nos mandan un NULL, no va
+		*lst = new;
 }
